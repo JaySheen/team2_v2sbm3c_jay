@@ -22,6 +22,8 @@ public class MemberVO {
     private String nickname = "";
     /** 전화 번호 */
     private String tel = "";
+    /** 이메일 */
+    private String email = "";
     /** 가입일 */
     private String mdate = "";
     /** 등급 번호 */
@@ -56,6 +58,12 @@ public class MemberVO {
     }
     public void setTel(String tel) {
         this.tel = tel;
+    }
+    public String getEmail() {
+    return email;
+    }
+    public void setEmail(String email) {
+    this.email = email;
     }
     public String getMdate() {
         return mdate;
