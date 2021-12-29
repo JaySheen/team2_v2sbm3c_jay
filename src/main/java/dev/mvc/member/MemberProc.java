@@ -1,5 +1,8 @@
 package dev.mvc.member;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,5 +32,19 @@ public class MemberProc implements MemberProcInter  {
       int cnt = this.memberDAO.checkNICKNAME(nickname);
       return cnt;
     }
+    
+    @Override
+    public List<MemberVO> list() {
+      List<MemberVO> list = this.memberDAO.list();
+      return list;
+    }
+    
+    @Override
+    public MemberVO read(int memberno) {
+      MemberVO memberVO = this.memberDAO.read(memberno);
+      return memberVO;
+    }
+    
+
 
 }

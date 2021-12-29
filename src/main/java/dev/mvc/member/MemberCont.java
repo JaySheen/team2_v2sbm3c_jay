@@ -1,5 +1,7 @@
 package dev.mvc.member;
 
+import java.util.List;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -114,5 +116,24 @@ public class MemberCont {
       
       return mav; // forward
     }
+    
+    /**
+     * 목록 출력
+     * @param session
+     * @return
+     */
+     @RequestMapping(value="/member/list.do", method=RequestMethod.GET)
+     public ModelAndView list() {
+       ModelAndView mav = new ModelAndView();
+       
+       List<MemberVO> list = memberProc.list();
+       mav.addObject("list", list);
+
+       mav.setViewName("/member/list"); // /webapp/WEB-INF/views/member/list.jsp
+       
+       return mav;
+     }  
+    
+    
 
 }
