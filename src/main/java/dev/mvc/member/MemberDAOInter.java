@@ -37,5 +37,26 @@ public interface MemberDAOInter {
      */
     public MemberVO read(int memberno);
     
+    /**
+     * id로 회원 정보 조회
+     * @param id
+     * @return
+     */
+    public MemberVO readById(String id);
+    
+    /**
+     * 수정 처리
+     * @param memberVO
+     * @return
+     */
+    public int update(MemberVO memberVO);
+    
+    /**
+     * 회원 삭제 처리
+     * @param memberno
+     * @return
+     */
+    public int delete(int memberno);
+    
 
 }

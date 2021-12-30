@@ -45,6 +45,25 @@ public class MemberProc implements MemberProcInter  {
       return memberVO;
     }
     
+    @Override
+    public MemberVO readById(String id) {
+      MemberVO memberVO = this.memberDAO.readById(id);
+      return memberVO;
+    }
+    
+    @Override
+    public int update(MemberVO memberVO) {
+      int cnt = this.memberDAO.update(memberVO);
+      return cnt;
+    }
+    
+    @Override
+    public int delete(int memberno) {
+      int cnt = this.memberDAO.delete(memberno);
+      return cnt;
+    }
+   
+    
 
 
 }
