@@ -5,6 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace = "dev.mvc.member.MemberDAOInter">
 
+  <!-- id 중복 체크 -->
+  <select id="checkID" resultType="int" parameterType="String">
+    SELECT COUNT(id) as cnt
+    FROM member
+    WHERE id=#{id}
+  </select>
+
   <insert id="create" parameterType="dev.mvc.member.MemberVO">
     INSERT INTO member(memberno, id, passwd, nickname, tel, email, mdate, gradeno)
     VALUES (member_seq.nextval, #{id}, #{passwd}, #{nickname}, #{tel}, #{email}, sysdate, #{gradeno})
@@ -14,13 +21,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     SELECT memberno, id, passwd, nickname, tel, email, mdate, gradeno
     FROM member
     ORDER BY memberno ASC
-  </select>
-  
-  <!-- id 중복 체크 -->
-  <select id="checkID" resultType="int" parameterType="String">
-    SELECT COUNT(id) as cnt
-    FROM member
-    WHERE id=#{id}
   </select>
   
   <!-- nickname 중복 체크 -->

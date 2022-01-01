@@ -5,7 +5,7 @@
   
   <%-- 화면 하단 메뉴 --%>
   <DIV class='copyright'>
-    Powered by Spring Boot + MyBATIS + Oracle Cloud + Docker + Oracle + jQuery + Aajx + Ubuntu 18.04.
+    Powered by Spring Boot + MyBATIS + Oracle Cloud + Oracle
     <br>
     Project 빵파고  
   </DIV>
