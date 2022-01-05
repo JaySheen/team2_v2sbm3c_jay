@@ -53,7 +53,7 @@ VALUES (member_seq.nextval, 'manager2', '1234', '게시판 매니저', '000-0000
   
 -- 개인 회원 테스트 계정
 INSERT INTO member(memberno, id, passwd, nickname, tel, email, mdate, gradeno)
-VALUES (member_seq.nextval, 'user1', '1234', '회원1', '000-0000-0000', 'Insert@Email.address', sysdate, 10);
+VALUES (18, 'member18', '1234', '멤버18', '000-0000-0000', 'Insert@Email.address', sysdate, 10);
  
 INSERT INTO member(memberno, id, passwd, nickname, tel, email, mdate, gradeno)
 VALUES (member_seq.nextval, 'user2', '1234', '회원2', '000-0000-0000', 'Insert@Email.address', sysdate, 10);
@@ -97,17 +97,17 @@ CNT
 ------
    1   ← 중복 됨.
    
- 4) mypage: memberno기준으로 member_info NATURAL JOIN
-  SELECT memberno, id, nickname, tel, email, mdate, gradeno, taste1, taste2
-  FROM member
-  NATURAL JOIN  member_info
-  WHERE memberno=4;
+  4) mypage: memberno기준으로 member_info NATURAL JOIN
+SELECT memberno, id, nickname, tel, email, mdate, gradeno, taste1, taste2
+FROM member
+NATURAL JOIN  member_info
+WHERE memberno=4;
  
- 
--- SELECT m1.memberno, m1.id, m1.nickname, m1.tel, m1.email, m1.mdate, m1.gradeno, m2.taste1, m2.taste2
--- FROM member m1
--- LEFT OUTER JOIN member_info m2
--- ON (m1.memberno=m2.memberno);
+  5) LEFT OUTER JOIN
+SELECT m1.memberno, m1.id, m1.nickname, m1.tel, m1.email, m1.mdate, m1.gradeno, m2.taste1, m2.taste2
+FROM member m1
+LEFT OUTER JOIN member_info m2
+ON (m1.memberno=m2.memberno);
 
 
   
@@ -121,11 +121,11 @@ COMMIT;
   
   5. 삭제
   1) 모두 삭제
-DELETE FROM member;
+--DELETE FROM member;
  
   2) 특정 회원 삭제
-DELETE FROM member
-WHERE memberno=6;
+--DELETE FROM member
+--WHERE memberno=6;
 
 
 COMMIT;
