@@ -33,7 +33,7 @@ COMMENT ON COLUMN MEMBER.EMAIL is '이메일';
 COMMENT ON COLUMN MEMBER.MDATE is '가입일';
 COMMENT ON COLUMN MEMBER.GRADENO is '등급번호';
 
-DROP SEQUENCE member_seq;
+--DROP SEQUENCE member_seq;
 CREATE SEQUENCE member_seq
   START WITH 1              -- 시작 번호
   INCREMENT BY 1          -- 증가값
@@ -53,13 +53,13 @@ VALUES (member_seq.nextval, 'manager2', '1234', '게시판 매니저', '000-0000
   
 -- 개인 회원 테스트 계정
 INSERT INTO member(memberno, id, passwd, nickname, tel, email, mdate, gradeno)
-VALUES (18, 'member18', '1234', '멤버18', '000-0000-0000', 'Insert@Email.address', sysdate, 10);
+VALUES (member_seq.nextval, 'user1', '1234', '회원1', '000-0000-0000', 'Insert@Email.address', sysdate, 10);
  
 INSERT INTO member(memberno, id, passwd, nickname, tel, email, mdate, gradeno)
 VALUES (member_seq.nextval, 'user2', '1234', '회원2', '000-0000-0000', 'Insert@Email.address', sysdate, 10);
  
 INSERT INTO member(memberno, id, passwd, nickname, tel, email, mdate, gradeno)
-VALUES (member_seq.nextval, 'user3', '1234', '회원3', '000-0000-0000', 'Insert@Email.address', sysdate, 10);
+VALUES (member_seq.nextval, 'user18', '1234', '회원18', '000-0000-0000', 'Insert@Email.address', sysdate, 10);
  
 
 COMMIT;
@@ -125,7 +125,7 @@ COMMIT;
   
   5. 삭제
   1) 모두 삭제
---DELETE FROM member;
+DELETE FROM member;
  
   2) 특정 회원 삭제
 --DELETE FROM member
