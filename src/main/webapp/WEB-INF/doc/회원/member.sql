@@ -116,6 +116,10 @@ UPDATE member
 SET nickname='빵덕1', tel='111-1111-1111', email='email@bpg.com', gradeno=20
 WHERE memberno=4;
 
+UPDATE member 
+SET id='user29', nickname='회원29'
+WHERE memberno=29;
+
 COMMIT;  
   
   
