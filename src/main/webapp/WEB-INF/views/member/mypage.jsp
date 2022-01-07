@@ -62,8 +62,8 @@
                                   <c:set var="nickname" value ="${memberVO.nickname}" />
                                   
                               <TR>
-                                    <TD class='td_left'><A href="./read.do?memberno=${memberno}">${id}</A></TD>
-                                    <TD class='td_left'><A href="./read.do?memberno=${memberno}">${nickname}</A></TD>
+                                    <TD class='td_basic'><A href="./read.do?memberno=${memberno}">${id }</A></TD>
+                                    <TD class='td_basic'><A href="./read.do?memberno=${memberno}">${nickname }</A></TD>
                               </TR>
                               </c:forEach>
                           </TABLE>
