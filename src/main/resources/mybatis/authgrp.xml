@@ -5,10 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace = "dev.mvc.authgrp.AuthgrpDAOInter">
-    <insert id = "create" parameterType="dev.mvc.authgrp.AuthgrpVO">
+    <!-- <insert id = "create" parameterType="dev.mvc.authgrp.AuthgrpVO">
         INSERT INTO authgrp(authno, authname)
         VALUES (authgrp_seq.nextval, #{authname})
-    </insert>
+    </insert>  -->
+    
+  <insert id = "create" parameterType="dev.mvc.authgrp.AuthgrpVO">
+    INSERT ALL
+      INTO authgrp VALUES(authgrp_seq.nextval, #{authname})
+      INTO auth_info VALUES(authgrp_seq.nextval, #{create_auth}, #{update_auth}, #{delete_auth}, #{read_auth})
+    SELECT *
+    FROM DUAL;
+  </insert>
     
   <select id="list_authno_asc" resultType="dev.mvc.authgrp.AuthgrpVO">
     SELECT  authno, authname

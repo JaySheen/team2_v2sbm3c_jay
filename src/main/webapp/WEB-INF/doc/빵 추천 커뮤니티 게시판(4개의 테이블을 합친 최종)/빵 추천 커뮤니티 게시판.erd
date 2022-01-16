@@ -23,8 +23,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>-27</x>
-        <y>89</y>
+        <x>16</x>
+        <y>55</y>
       </constraint>
       <sourceConnections/>
       <targetConnections>
@@ -80,8 +80,8 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>259</x>
-                    <y>74</y>
+                    <x>329</x>
+                    <y>61</y>
                   </constraint>
                   <sourceConnections/>
                   <targetConnections>
@@ -280,8 +280,8 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>610</x>
-                    <y>-1</y>
+                    <x>608</x>
+                    <y>60</y>
                   </constraint>
                   <sourceConnections/>
                   <targetConnections>
@@ -485,8 +485,8 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>884</x>
-                    <y>32</y>
+                    <x>888</x>
+                    <y>54</y>
                   </constraint>
                   <sourceConnections/>
                   <targetConnections>

@@ -72,7 +72,8 @@ public class AuthgrpCont {
     // http://localhost:9091/authgrp/list.do
       
     @RequestMapping(value = "/authgrp/list.do", method = RequestMethod.GET)
-    public ModelAndView list() { ModelAndView mav = new ModelAndView();
+    public ModelAndView list() {
+        ModelAndView mav = new ModelAndView();
       
     List<AuthgrpVO> list = this.authgrpProc.list_authno_asc();
       
@@ -80,7 +81,12 @@ public class AuthgrpCont {
       
     mav.setViewName("/authgrp/list"); // /webapp/WEB-INF/views/authgrp/list.jsp
     return mav;
-    }
-     
+    } 
     
 }
+
+
+
+
+
+

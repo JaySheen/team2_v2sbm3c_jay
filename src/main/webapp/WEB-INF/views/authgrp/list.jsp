@@ -49,7 +49,7 @@
             </select>
             
             <label>Delete권한</label>
-            <select name='delete__auth'>
+            <select name='delete_auth'>
                 <option value='Y' selected="selected">Y</option>
                 <option value='N'>N</option>
             </select>        
@@ -70,17 +70,39 @@
         <TR>
             <TH class="th_bs">권한번호</TH>
             <TH class="th_bs">권한그룹명</TH>
-            <TH class="th_bs">권한그룹명</TH>
+            <TH class="th_bs">create_auth</TH>
+            <TH class="th_bs">read_auth</TH>
+            <TH class="th_bs">update_auth</TH>
+            <TH class="th_bs">delete_auth</TH>
+            <TH class="th_bs">기타</TH>
         
         </TR>
         </thead>
         
         
         <tbody>
-        
+            <c:forEach var="authgrpVO" items="${list}">
+                <c:set var="authno" value="${authgrpVO.authno }" />
+                <c:set var="authname" value="${authgrpVO.authname }" />
+                <c:set var="create_auth" value="${authgrpVO.create_auth }" />
+                <c:set var="read_auth" value="${authgrpVO.read_auth }" />
+                <c:set var="update_auth" value="${authgrpVO.update_auth }" />
+                <c:set var="delete_auth" value="${authgrpVO.delete_auth }" />
+                <TR>
+                    <TD class="td_bs">${authno }</TD>
+                    <TD class="td_bs">${authname }</TD>
+                    <TD class="td_bs">${create_auth }</TD>
+                    <TD class="td_bs">${read_auth }</TD>
+                    <TD class="td_bs">${update_auth }</TD>
+                    <TD class="td_bs">${delete_auth }</TD>
+                    <TD class="td_bs">
+                        <A href="./read_update.do?authhrp=${authno }" title="수정"><span class="glyphicon glyphicon-pencil"></span></A>
+                        <A href="./read_delete.do?authhrp=${authno }" title="삭제"><span class="glyphicon glyphicon-trash"></span></A>
+                    </TD>   
+                </TR>   
+            </c:forEach>        
         </tbody>
-    
-    
+        
     </TABLE>   
 </DIV> 
 </body>

@@ -115,7 +115,7 @@
           dataType: 'json', // 응답 형식: json, html, xml...
           data: params,      // 데이터
           success: function(rdata) { // 서버로부터 성공적으로 응답이 온경우
-            alert(rdata);
+            //alert(rdata);
             var msg = "";
             
             if (rdata.cnt > 0) {
