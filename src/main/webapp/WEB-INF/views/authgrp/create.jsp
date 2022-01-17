@@ -23,7 +23,7 @@
 </script>
 </head>
 <body>
- <jsp:include page="../menu/top.jsp" flush='false' />
+<jsp:include page="../menu/top.jsp" flush='false' />
  
 <DIV class='title_line'>권한 그룹  > 등록</DIV>
  
@@ -38,7 +38,8 @@
        </div>
     </div>
 
-    <div class="form-group">
+<!-- auth_info의 칼럼임(create_auth, read_auth, update_auth, delet_auth)-->
+<!--     <div class="form-group">
       <label class="control-label col-md-4">Create</label>
       <div class="col-md-8">
          <select name='create_auth' class="form-control" style='width: 20%;'>
@@ -76,7 +77,7 @@
         <option value='N'>N</option>
       </select>
     </div>
-   </div>
+   </div> -->
  
   
    <div class="content_body_bottom" style="padding-right: 20%;">

@@ -20,6 +20,7 @@ public class Auth_infoVO {
     private String delete_auth = "";
     /** 조회 권한 */
     private String read_auth = "";
+
     public int getAuthno() {
         return authno;
     }

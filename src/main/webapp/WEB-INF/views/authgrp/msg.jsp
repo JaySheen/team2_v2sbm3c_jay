@@ -24,12 +24,32 @@
   <fieldset class='fieldset_basic'>
     <UL>
       <c:choose>
-
-        <c:when test="${param.code == 'create_fail'}"> Java if
+        <c:when test="${code == 'create_success'}"> <%-- Java if --%>
           <LI class='li_none'>
-            <span class="span_fail">권합그룹 생성에 실패했습니다. 다시 시도해주세요.</span>
+            <span class="span_success">새로운 권한 그룹 [${authgrpVO.authname }] 등록했습니다.</span>
           </LI>                                                                      
         </c:when>
+
+        <c:when test="${code == 'create_fail'}"> <%-- Java if --%>
+          <LI class='li_none'>
+            <span class="span_fail">권한그룹 생성에 실패했습니다. 다시 시도해주세요.</span>
+          </LI>                                                                      
+        </c:when>
+        <c:when test="${code == 'update'}"> <%-- Java if --%>
+          <LI class='li_none'>
+            <span class="span_success">권한 그룹 수정에 실패했습니다.</span>
+          </LI>                                                                      
+        </c:when>
+        <c:when test="${code == 'delete_success'}"> <%-- Java if --%>
+          <LI class='li_none'>
+            <span class="span_success">[${authgrpVO.authname }] 권한 그룹 삭제에 성공했습니다.</span>
+          </LI>                                                                      
+        </c:when>        
+        <c:when test="${code == 'delete_fail'}"> <%-- Java if --%>
+          <LI class='li_none'>
+            <span class="span_fail">[${authgrpVO.authname }] 권한 그룹 삭제에 실패했습니다.</span>
+          </LI>                                                                      
+        </c:when> 
 
         <c:when test="${code == 'login_need'}"> <%-- Java if --%>
           <LI class='li_none'>
@@ -45,16 +65,29 @@
             <span class="span_fail">다시 시도해주세요.</span>
           </LI>
         </c:otherwise>
-        
       </c:choose>
+      
       <LI class='li_none'>
         <br>
         <c:choose>
-            <c:when test="${param.cnt == 0 }">
+          <c:when test="${msg == 'child_record_found' }">
+            삭제하려는 권한 그룹에 속한 상세권한정보가 있습니다.<br>
+            <br>
+            『<A href="../auth_info/list_by_authno.do?authno=${param.authno }">상세권한 삭제</A>』
+          </c:when>
+        </c:choose>
+      </LI>
+      
+      <LI class='li_none'>
+
+        <br>
+        <c:choose>
+            <c:when test="${cnt == 0 }">
                 <button type='button' onclick="history.back()" class="btn btn-primary">다시 시도</button>    
             </c:when>
         </c:choose>
-
+        
+        <button type='button' onclick="location.href='./list.do'" class="btn">목록</button>
       </LI>
     </UL>
   </fieldset>
