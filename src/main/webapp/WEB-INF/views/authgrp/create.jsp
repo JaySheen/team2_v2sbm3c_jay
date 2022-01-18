@@ -33,7 +33,7 @@
     <div class="form-group">
        <label class="control-label col-md-4">권한그룹명</label>
        <div class="col-md-8">
-         <input type='text' name='name' value='' required="required" placeholder="권한그룹명"
+         <input type='text' name='authname' value='' required="required" placeholder="권한그룹명"
                     autofocus="autofocus" class="form-control" style='width: 50%;'>
        </div>
     </div>

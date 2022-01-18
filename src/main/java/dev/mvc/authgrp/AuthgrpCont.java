@@ -53,10 +53,10 @@ public class AuthgrpCont {
         mav.addObject("cnt", cnt);
        
         if (cnt == 1) {
-            // System.out.println("등록 성공");
+            System.out.println("등록 성공");
             
-            // mav.addObject("code", "create_success"); // request에 저장, request.setAttribute("code", "create_success")
-            // mav.setViewName("/authgrp/msg"); // /WEB-INF/views/authgrp/msg.jsp
+            mav.addObject("code", "create_success"); // request에 저장, request.setAttribute("code", "create_success")
+            mav.setViewName("/authgrp/msg"); // /WEB-INF/views/authgrp/msg.jsp
             
             // response.sendRedirect("/authgrp/list.do");
             mav.setViewName("redirect:/authgrp/list.do");
@@ -69,18 +69,17 @@ public class AuthgrpCont {
     }
     
         
-    // http://localhost:9091/authgrp/list.do
-      
+    // http://localhost:9091/authgrp/list.do  
     @RequestMapping(value = "/authgrp/list.do", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView mav = new ModelAndView();
       
-    List<AuthgrpVO> list = this.authgrpProc.list_authno_asc();
+        List<AuthgrpVO> list = this.authgrpProc.list_authno_asc();
       
-    mav.addObject("list", list); // request.setAttribute("list", list);
+        mav.addObject("list", list); // request.setAttribute("list", list);
       
-    mav.setViewName("/authgrp/list"); // /webapp/WEB-INF/views/authgrp/list.jsp
-    return mav;
+        mav.setViewName("/authgrp/list"); // /webapp/WEB-INF/views/authgrp/list.jsp
+        return mav;
     } 
 
     /**
@@ -91,7 +90,7 @@ public class AuthgrpCont {
      */
     @RequestMapping(value = "/authgrp/read_update.do", method = RequestMethod.GET)
     public ModelAndView read_update(int authno) {
-        // request.setAttribute("categrpno", int categrpno) 작동 안됨.
+        // request.setAttribute("authno", int authno) 작동 안됨.
 
         ModelAndView mav = new ModelAndView();
 

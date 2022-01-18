@@ -25,9 +25,10 @@
 <DIV class='title_line'>권한그룹 관리(관리자)</DIV>
 <DIV class='content_body'>
     <DIV id='panel_create' style='padding: 10px 0px 10px 0px; background-color: #goldenrod; width: 100%; text-align: center;'>
-        <FORM>
+        <FORM name='frm_create' id='frm_create' method='POST' action='./create.do'>
+        
             <label>권한그룹이름</label>
-            <input type='text' name='name' value='' required="required" style='width: 25%;'
+            <input type='text' name='authname' value='' required="required" style='width: 25%;'
                 autofocus="autofocus">
 
            <button type="submit" id='submit' class='btn btn-primary btn-xs' style="height: 22px; margin-bottom: 3px;">등록</button>
@@ -60,7 +61,7 @@
 
                 <TR>
                     <TD class="td_bs">${authno }</TD>
-                    <TD class="td_bs">${authname }</TD>
+                    <TD class="td_bs"><A href="../auth_info/list_by_authno.do?authno=${authno }">${authname }</TD>
 
                     <TD class="td_bs">
                         <A href="./read_update.do?authno=${authno }" title="수정"><span class="glyphicon glyphicon-pencil"></span></A>
