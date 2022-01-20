@@ -35,7 +35,7 @@
     부모테이블 authno PK 컬럼 값 이용, FK 선언
     http://localhost:9090/auth_info/create.do?authno=1
      -->
-    <input type="hidden" name="authno" value="${authgrp.authno }"> 
+    <input type="hidden" name="authno" value="${authgrpVO.authno }"> 
     
     <div class="form-group">
       <label class="control-label col-md-4">Create</label>

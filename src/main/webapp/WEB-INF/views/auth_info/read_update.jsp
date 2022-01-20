@@ -34,15 +34,15 @@
 
   <DIV id='panel_update' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center;'>
     <FORM name='frm' id='frm' method='POST' action='./update.do'>
-      <input type="hidden" name="authno" value="${param.authno }">
+      <input type="hidden" name="authno" value="${auth_infoVO.authno }">
       
-      <label>권한그룹 번호</label>
-      <input type='number' name='authno' value='${auth_infoVO.authno }' 
-                 required="required" min="1" max="100" step="1" autofocus="autofocus">   
+      <label>권한그룹 번호</label><SPAN style="background-color: coral; color: navy; font-weight: bold;"> ${auth_infoVO.authno }</SPAN>
+<%--       <input type='number' name='authno' value='${auth_infoVO.authno }' 
+                 required="required" min="1" max="100" step="1" autofocus="autofocus">    --%>
                       
-      <label>권한그룹이름</label>
-      <input type='text' name='authname' value='${authgrpVO.authname }' required="required" style='width: 25%;'
-          autofocus="autofocus">
+      <label>권한그룹이름 :</label><SPAN style="background-color: coral; color: navy; font-weight: bold;"> ${authgrpVO.authname }</SPAN>
+<%--       <input type='text' name='authname' value='${authgrpVO.authname }' required="required" style='width: 25%;'
+          autofocus="autofocus"> --%>
     
       <label>등록권한</label>
       <select name='create_auth'>

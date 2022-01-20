@@ -30,8 +30,9 @@
 
   <DIV id='panel_create' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center;'>
     <FORM name='frm_create' id='frm_create' method='POST' action='./create.do'>
-      <label>권한 번호</label>
-      <input type='number' name='authno' value='${param.authno }' >
+      <input type="hidden" name="authno" value="${param.authno }">
+      <label>권한 번호</label> <SPAN style="background-color: coral; color: navy; font-weight: bold;">${param.authno }</SPAN>
+<%--       <input type='number' name='authno' value='${param.authno }' > --%>
 
     
       <label>등록권한</label>
@@ -62,6 +63,8 @@
   
       <button type="submit" id='submit'>등록</button>
       <button type="button" onclick="cancel();">취소</button>
+      <H3><label>권한 번호</label> <SPAN style="background-color: coral; color: navy; font-weight: bold;">${param.authno }</SPAN>
+     <SPAN style="background-color: coral; color: navy; font-weight: bold;">${authgrpVO.authname }</SPAN><label>의 상세 권한을 등록해주세요.</label></H3>
     </FORM>
   </DIV>
 
@@ -108,6 +111,9 @@
     </tbody>
    
   </TABLE>
+</DIV>
+<DIV class="content_body_bottom" style="padding-right: 50%;">
+    <button type="button" onclick="location.href='../auth_info/list_all_join.do'" class="btn btn-primary">권한상세목록</button>
 </DIV>
 
  

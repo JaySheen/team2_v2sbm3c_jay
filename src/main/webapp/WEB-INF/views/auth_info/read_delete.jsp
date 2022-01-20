@@ -85,8 +85,8 @@
         <TD class="td_bs">${delete_auth }</TD>
         <TD class="td_bs">${read_auth }</TD>
         <TD class="td_bs">
-          <A href="./read_update.do?authno=${r_authno }" title="수정"><span class="glyphicon glyphicon-pencil"></span></A>
-          <A href="./read_delete.do?authno=${r_authno }" title="삭제"><span class="glyphicon glyphicon-trash"></span></A>
+          <A href="./read_update.do?authno=${authno }" title="수정"><span class="glyphicon glyphicon-pencil"></span></A>
+          <A href="./read_delete.do?authno=${authno }" title="삭제"><span class="glyphicon glyphicon-trash"></span></A>
         </TD>   
       </TR>   
     </c:forEach> 

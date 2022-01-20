@@ -15,14 +15,25 @@
       <A class='menu_link'  href='/brdic/list_by_dic_no_search_paging.do'>🍞빵 백과사전🍞</A><span class='top_menu_sep'> </span>
       <c:choose>
         <c:when test="${sessionScope.id != null}"> <%-- 로그인 한 경우 --%>
-            ${sessionScope.nickname } <A class='menu_link'  href='/member/mypage.do' >Mypage</A><span class='top_menu_sep'> </span>
+            ${sessionScope.nickname }<A class='menu_link'  href='/member/mypage.do' >Mypage</A><span class='top_menu_sep'> </span>
             <A class='menu_link'  href='/member/logout.do' >Logout</A><span class='top_menu_sep'> </span>
-            <A class='menu_link'  href='/member/list.do' >List(매니저)</A><span class='top_menu_sep'> </span>
-        
+
         </c:when>
         <c:otherwise> <%-- 로그인 하지 않은 경우 --%>
             <A class='menu_link'  href='/member/login.do' >🍞Login🍞</A><span class='top_menu_sep'> </span>
             <A class='menu_link'  href='/member/create.do'>🍞회원가입🍞</A><span class='top_menu_sep'> </span>
+        </c:otherwise>       
+      </c:choose>
+      
+      <c:choose>
+        <c:when test="${sessionScope.gradeno <= 9}"> <%-- 매니저 로그인 한 경우 --%>
+
+            <A class='menu_link'  href='/member/list.do' >회원 List(매니저)</A><span class='top_menu_sep'> </span>
+            <A class='menu_link'  href='/authgrp/list.do' >권한관리 List(매니저)</A><span class='top_menu_sep'> </span>
+            <A class='menu_link'  href='/auth_info/list_all_join.do' >권한관리 상세List(매니저)</A><span class='top_menu_sep'> </span>   
+        </c:when>
+        <c:otherwise> <%-- 관리자 제외 일반회원에게만 보여줄 경우 --%>
+
         </c:otherwise>       
       </c:choose>
       <%-- 임시: admin.do 에서 관리자 로그인 or 관리자 페이지 개발 

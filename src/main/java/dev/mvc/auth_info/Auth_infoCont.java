@@ -115,6 +115,7 @@ public class Auth_infoCont {
       mav.addObject("authgrpVO", authgrpVO); 
       
       mav.setViewName("/auth_info/list_by_authno"); // /auth_info/list_by_authno.jsp
+      
       return mav;
     }
     
@@ -180,7 +181,8 @@ public class Auth_infoCont {
       
       if (cnt == 1) {
           mav.addObject("authno", auth_infoVO.getAuthno());
-          mav.setViewName("redirect:/auth_info/list_by_authno.do");
+//          mav.setViewName("redirect:/auth_info/list_by_authno.do");
+          mav.setViewName("redirect:/auth_info/list_all_join.do");
       } else {
           mav.addObject("code", "update_fail"); // request에 저장
           mav.addObject("cnt", cnt); // request에 저장

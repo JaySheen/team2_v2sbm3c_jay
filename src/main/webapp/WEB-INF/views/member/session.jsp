@@ -28,6 +28,12 @@
   <br>  
   로그인된 ID: ${sessionScope.id}
   <br>
+<!--   == 또는 eq
+        != 또는 ne
+        < 또는 lt
+        > 또는 gt
+        <= 또는 le
+        >= 또는 ge -->
   
   <%-- 등급번호   1~10: 관리자(커뮤니티)
                        10~19: 씨앗(일반 이용자)
@@ -55,7 +61,7 @@
     
     <c:choose>
       <c:when test="${gradeno <= 199}"> + 관리자 + 회원 +파트너 영역</c:when>
-      <c:when test="${gradeno >= 400 and gradeno <= 599}"> + 정지, 탈퇴 영역 처리</c:when>
+      <c:when test="${gradeno >= 400 and gradeno <= 999}"> + 정지, 탈퇴 영역 처리</c:when>
     </c:choose>  
   </c:if><br> 
  
