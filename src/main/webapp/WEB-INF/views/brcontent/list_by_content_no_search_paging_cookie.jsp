@@ -53,6 +53,107 @@
       
   }  
 
+  <%-- 로그인 --%>
+  function login_ajax() {
+    var params = "";
+    params = $('#frm_login').serialize(); // 직렬화, 폼의 데이터를 키와 값의 구조로 조합
+    // params += '&${ _csrf.parameterName }=${ _csrf.token }';
+    // console.log(params);
+    // return;
+    
+    $.ajax(
+      {
+        url: '/member/login_ajax.do',
+        type: 'post',  // get, post
+        cache: false, // 응답 결과 임시 저장 취소
+        async: true,  // true: 비동기 통신
+        dataType: 'json', // 응답 형식: json, html, xml...
+        data: params,      // 데이터
+        success: function(rdata) { // 응답이 온경우
+          var str = '';
+          console.log('-> login cnt: ' + rdata.cnt);  // 1: 로그인 성공
+          
+          if (rdata.cnt == 1) {
+            // 쇼핑카트에 insert 처리 Ajax 호출
+            $('#div_login').hide();
+            // alert('로그인 성공');
+            $('#login_yn').val('YES'); // 로그인 성공 기록
+            cart_ajax_post(); // 쇼핑카트에 insert 처리 Ajax 호출     
+            
+          } else {
+            alert('로그인에 실패했습니다.<br>잠시후 다시 시도해주세요.');
+            
+          }
+        },
+        // Ajax 통신 에러, 응답 코드가 200이 아닌경우, dataType이 다른경우 
+        error: function(request, status, error) { // callback 함수
+          console.log(error);
+        }
+      }
+    );  //  $.ajax END
+
+  }
+
+  <%-- 쇼핑 카트에 상품 추가 --%>
+  function cart_ajax(content_no) {
+    var f = $('#frm_login');
+    $('#content_no', f).val(content_no);  // 쇼핑카트 등록시 사용할 상품 번호를 저장.
+    
+    console.log('-> content_no: ' + $('#content_no', f).val()); 
+    
+    // console.log('-> id:' + '${sessionScope.id}');
+    if ('${sessionScope.id}' != '' || $('#login_yn').val() == 'YES') {  // 로그인이 되어 있다면
+        cart_ajax_post();
+    } else { // 로그인 안된 경우
+        $('#div_login').show();
+    }
+
+  }
+
+  <%-- 쇼핑카트 상품 등록 --%>
+  function cart_ajax_post() {
+    var f = $('#frm_login');
+    var contentsno = $('#content_no', f).val();  // 쇼핑카트 등록시 사용할 상품 번호.
+    
+    var params = "";
+    // params = $('#frm_login').serialize(); // 직렬화, 폼의 데이터를 키와 값의 구조로 조합
+    params += 'content_no=' + content_no;
+    params += '&${ _csrf.parameterName }=${ _csrf.token }';
+    console.log('-> cart_ajax_post: ' + params);
+    // return;
+    
+    $.ajax(
+      {
+        url: '/cart/create.do',
+        type: 'post',  // get, post
+        cache: false, // 응답 결과 임시 저장 취소
+        async: true,  // true: 비동기 통신
+        dataType: 'json', // 응답 형식: json, html, xml...
+        data: params,      // 데이터
+        success: function(rdata) { // 응답이 온경우
+          var str = '';
+          console.log('-> cart_ajax_post cnt: ' + rdata.cnt);  // 1: 쇼핑카트 등록 성공
+          
+          if (rdata.cnt == 1) {
+            var sw = confirm('선택한 상품이 장바구니에 담겼습니다.\n장바구니로 이동하시겠습니까?');
+            if (sw == true) {
+              // 쇼핑카트로 이동
+              // location.href='/cart/list.do';
+            }           
+          } else {
+            alert('선택한 상품을 장바구니에 담지못했습니다.<br>잠시후 다시 시도해주세요.');
+          }
+        },
+        // Ajax 통신 에러, 응답 코드가 200이 아닌경우, dataType이 다른경우 
+        error: function(request, status, error) { // callback 함수
+          console.log(error);
+        }
+      }
+    );  //  $.ajax END
+
+  }
+  
+  
 </script>
  
 </head> 
@@ -97,7 +198,7 @@
      <%-- table 컬럼 --%>
      <thead>
       <tr>
-      <th style='text-align: center;'>회원 번호</th>
+      <th style='text-align: center;'>작성자ID</th>
        <th style='text-align: center;'>🍞포토글🍞</th> 
        <th style='text-align: center;'> </th>
         <th style='text-align: center;'>등록일</th>
@@ -113,6 +214,7 @@
     <tbody>
       <c:forEach var="brcontentVO" items="${list }">
         <c:set var="content_no" value="${brcontentVO.content_no }" />
+        <c:set var="content_id" value="${brcontentVO.content_id }" />
         <c:set var="thumb1" value="${brcontentVO.thumb1 }" />
         <c:set var="content_name" value="${brcontentVO.content_name }" />
         <c:set var="content_post" value="${brcontentVO.content_post }" />
@@ -120,10 +222,9 @@
         <c:set var="content_mdtime" value="${brcontentVO.content_mdtime.substring(0, 10) }" />
         <c:set var="recom" value="${brcontentVO.recom }" />
         <c:set var="content_view" value="${brcontentVO.content_view }" />
-        <c:set var="memberno" value="${brcontentVO.memberno }" />
         
 <tr> 
-          <td style='vertical-align: middle; text-align: center;'>${brcontentVO.memberno}</td>
+          <td style='vertical-align: middle; text-align: center;'>${brcontentVO.content_id}</td>
           <td style='vertical-align: middle; text-align: center;'>
             <c:choose>
               <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
