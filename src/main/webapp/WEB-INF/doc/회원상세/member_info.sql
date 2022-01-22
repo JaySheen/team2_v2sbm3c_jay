@@ -55,6 +55,12 @@ SELECT memberno, taste1, taste2, surveyno
 FROM member_info
 WHERE memberno = 3;
 
+-- 회원, 회원상세 조인
+SELECT r.memberno, r.id as r_id, r.nickname as r_nickname,  r.tel as r_tel,  r.email as r_email, r.gradeno as r_gradeno, r.mdate as r_mdate, 
+           c.taste1, c.taste2
+FROM member r, member_info c
+WHERE r.memberno = 3 and c.memberno = 3
+ORDER BY memberno ASC
   
   4. 수정
 UPDATE member_info 

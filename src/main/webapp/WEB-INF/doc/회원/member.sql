@@ -97,18 +97,24 @@ CNT
 ------
    1   ← 중복 됨.
    
-  4) mypage: memberno기준으로 member_info NATURAL JOIN
-SELECT memberno, id, nickname, tel, email, mdate, gradeno, taste1, taste2
-FROM member
-NATURAL JOIN  member_info
-WHERE memberno=4;
+--  4) mypage: memberno기준으로 member_info NATURAL JOIN
+--SELECT memberno, id, nickname, tel, email, mdate, gradeno, taste1, taste2
+--FROM member
+--NATURAL JOIN  member_info
+--WHERE memberno=4;
  
-  5) LEFT OUTER JOIN
-SELECT m1.memberno, m1.id, m1.nickname, m1.tel, m1.email, m1.mdate, m1.gradeno, m2.taste1, m2.taste2
-FROM member m1
-LEFT OUTER JOIN member_info m2
-ON (m1.memberno=m2.memberno);
+--  5) LEFT OUTER JOIN
+--SELECT m1.memberno, m1.id, m1.nickname, m1.tel, m1.email, m1.mdate, m1.gradeno, m2.taste1, m2.taste2
+--FROM member m1
+--LEFT OUTER JOIN member_info m2
+--ON (m1.memberno=m2.memberno);
 
+-- 조인
+SELECT r.memberno, r.id as r_id, r.nickname as r_nickname,  r.tel as r_tel,  r.email as r_email, r.gradeno as r_gradeno, 
+           c.taste1, c.taste2
+FROM member r, member_info c
+WHERE r.memberno = c.memberno
+ORDER BY memberno ASC, memberno ASC
 
   
   4. 수정

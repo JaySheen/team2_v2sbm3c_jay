@@ -46,7 +46,7 @@
     } else {  // when ID is entered
       params = 'id=' + id;
       // var params = $('#frm').serialize(); // 직렬화, 폼의 데이터를 키와 값의 구조로 조합
-      alert('params: ' + params);
+      // alert('params: ' + params);
 
       $.ajax({
         url: './checkID.do', // spring execute
@@ -56,7 +56,7 @@
         dataType: 'json', // 응답 형식: json, html, xml...
         data: params,      // 데이터
         success: function(rdata) { // 서버로부터 성공적으로 응답이 온경우
-          // alert(rdata);
+          //alert(rdata);
           var msg = "";
           
           if (rdata.cnt > 0) {
@@ -67,7 +67,7 @@
             $('#modal_content').attr('class', 'alert alert-success'); // Bootstrap CSS 변경
             msg = "사용 가능한 ID 입니다.";
             $('#btn_close').attr("data-focus", "passwd");  // passwd 입력으로 focus 이동
-            $.cookie('checkId', 'TRUE'); // Cookie 기록
+            // $.cookie('checkId', 'TRUE'); // Cookie 기록
           }
           
           $('#modal_title').html('ID 중복 확인');  // 제목 
@@ -81,6 +81,14 @@
       });
     }
   }
+  function setFocus() {  // focus 이동
+	    // console.log('btn_close click!');
+	    
+	    var tag = $('#btn_close').attr('data-focus'); // data-focus 속성에 선언된 값을 읽음 
+	    // console.log('tag: ' + tag);
+	    
+	    $('#' + tag).focus(); // data-focus 속성에 선언된 태그를 찾아서 포커스 이동
+	  }
 
 
 
@@ -125,7 +133,7 @@
             } else {
               $('#modal_content').attr('class', 'alert alert-success'); // Bootstrap CSS 변경
               msg = "사용 가능한 닉네임 입니다.";
-              // $.cookie('checkId', 'TRUE'); // Cookie 기록
+              //$.cookie('checkId', 'TRUE'); // Cookie 기록
             }
             
             $('#modal_title').html('닉네임 중복 확인');  // 제목 
