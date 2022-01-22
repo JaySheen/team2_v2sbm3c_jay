@@ -582,7 +582,7 @@ public class MemberCont {
               
               mav.setViewName("/member/mypage"); // /member/mypage.jsp
           } else {
-              mav.addObject("url", "login_need"); // login_need.jsp, redirect parameter 적용
+              mav.addObject("url", "/member/login_need"); // login_need.jsp, redirect parameter 적용
               
               mav.setViewName("redirect:/member/msg.do");    
           }

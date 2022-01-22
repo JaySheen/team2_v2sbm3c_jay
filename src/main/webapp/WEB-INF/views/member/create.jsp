@@ -24,6 +24,7 @@
     $('#btn_close').on('click', setFocus); // Dialog창을 닫은후의 focus 이동
     $('#btn_send').on('click', send); 
   });
+  
 
   // jQuery ajax 요청
   function checkID() {
@@ -225,7 +226,7 @@
     <div class="form-group" style="margin-top: auto;">
       <label for="id" class="col-md-5 control-label" style='font-size: 0.9em;'>ID</label>
       <div class="col-md-5">
-            <input type='text' class="form-control" name='id' id='id' value='' required="required" style='width: 40%;' placeholder="아이디" autofocus="autofocus">
+            <input type='text' class="form-control" name='id' id='id' value='' maxlength="20" required="required" style='width: 40%;' placeholder="아이디(한글 제외 20자 이내)" autofocus="autofocus">
             <button type='button' id="btn_checkID" class="btn btn-info btn-md">중복확인</button>
             <SPAN id='id_span'></SPAN> <!-- ID 중복 관련 메시지 -->
       </div>
@@ -234,21 +235,21 @@
     <div class="form-group">
         <label for="passwd" class="col-md-5 control-label" style='font-size: 0.9em;'>Password</label>
         <div class="col-md-5">
-            <input type='password' class="form-control" name='passwd' id='passwd' value='' required="required" style='width: 40%;' placeholder="패스워드">
+            <input type='password' class="form-control" name='passwd' id='passwd' value='' maxlength="17" required="required" style='width: 40%;' placeholder="패스워드">
         </div>
     </div>
 
     <div class="form-group">
         <label for="passwd2" class="col-md-5 control-label" style='font-size: 0.9em;'>Re-enter password</label>
         <div class="col-md-5">
-            <input type='password' class="form-control" name='passwd2' id='passwd2' value='' required="required" style='width: 40%;' placeholder="패스워드확인">
+            <input type='password' class="form-control" name='passwd2' id='passwd2' value='' maxlength="17" required="required" style='width: 40%;' placeholder="패스워드확인">
         </div>
     </div>
 
     <div class="form-group" style="margin-bottom: auto;">
         <label for="nickname" class="col-md-5 control-label" style='font-size: 0.9em;'>Nickname</label>
         <div class="col-md-5">
-            <input type='text' class="form-control" name='nickname' id='nickname' value='' required="required" style='width: 40%;' placeholder="닉네임">
+            <input type='text' class="form-control" name='nickname' id='nickname' value='' maxlength="10" required="required" style='width: 40%;' placeholder="닉네임(한글 포함 10자 이내)">
             <button type='button' id="btn_checkNICKNAME" class="btn btn-info btn-md">중복확인</button>
             <SPAN id='nickname_span'></SPAN> <!-- NICKNAME 중복 관련 메시지 -->
         </div>
