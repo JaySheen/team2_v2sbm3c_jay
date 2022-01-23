@@ -31,6 +31,26 @@ public class MemberProc implements MemberProcInter  {
     }
     
     @Override
+    public boolean isMember(HttpSession session){
+      boolean sw = false; // 로그인하지 않은 것으로 초기화
+      int gradeno = 999;  // 비회원
+      
+      System.out.println("-> gradeno: " + session.getAttribute("gradeno"));
+      if (session != null) {
+        String id = (String)session.getAttribute("id");
+        if (session.getAttribute("gradeno") != null) {
+          gradeno = (int)session.getAttribute("gradeno");
+        }
+        
+        if (id != null && gradeno <= 199){ // 관리자 + 회원 + 파트너
+          sw = true;  // 로그인 한 경우
+        }
+      }
+      
+      return sw;
+    }
+    
+    @Override
     public int checkNICKNAME(String nickname) {
       int cnt = this.memberDAO.checkNICKNAME(nickname);
       return cnt;
@@ -90,25 +110,7 @@ public class MemberProc implements MemberProcInter  {
       return cnt;
     }
     
-    @Override
-    public boolean isMember(HttpSession session){
-      boolean sw = false; // 로그인하지 않은 것으로 초기화
-      int gradeno = 999;
-      
-      System.out.println("-> gradeno: " + session.getAttribute("gradeno"));
-      if (session != null) {
-        String id = (String)session.getAttribute("id");
-        if (session.getAttribute("gradeno") != null) {
-          gradeno = (int)session.getAttribute("gradeno");
-        }
-        
-        if (id != null && gradeno <= 199){ // 관리자 + 회원 + 파트너
-          sw = true;  // 로그인 한 경우
-        }
-      }
-      
-      return sw;
-    }
+
 
     @Override
     public boolean isAdmin(HttpSession session) {

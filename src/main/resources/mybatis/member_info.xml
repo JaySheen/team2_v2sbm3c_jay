@@ -8,16 +8,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       INSERT INTO member_info(memberno, taste1, taste2)
       VALUES (#{memberno}, #{taste1}, #{taste2})
   </insert>
-  
-  <!-- Member + Member_info, 조인 -->
-  <select id="my_info" resultType="dev.mvc.member_info.Member_Member_infoVO">
-    SELECT r.memberno, r.id as r_id, r.nickname as r_nickname,  r.tel as r_tel,
-              r.email as r_email, r.gradeno as r_gradeno, r.mdate as r_mdate, 
-              c.taste1, c.taste2
-    FROM member r, member_info c
-    WHERE r.memberno = #{r.memberno } and c.memberno = #{c.memberno }
-    ORDER BY memberno ASC
-  </select>
 
   <!-- memberno로 회원 정보 수정 -->
   <update id="update" parameterType="dev.mvc.member_info.Member_infoVO">
@@ -32,6 +22,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     FROM auth_info
     WHERE memberno = #{memberno}
   </update>
+      
+  <!-- Member + Member_info, 조인-> -->
+  <select id="my_info" resultType="dev.mvc.member_info.Member_Member_infoVO">
+    SELECT r.memberno, r.id as r_id, r.nickname as r_nickname,  r.tel as r_tel,
+              r.email as r_email, r.gradeno as r_gradeno, r.mdate as r_mdate, 
+              c.taste1, c.taste2
+    FROM member r, member_info c
+    WHERE r.memberno = #{r.memberno } and c.memberno = #{c.memberno }
+    ORDER BY memberno ASC
+  </select>
+  
+  <!-- memberno로 회원 정보 member, member_info테이블 join하여 조회 -->
+  <select id="read_join" resultType="dev.mvc.member_info.Member_Member_infoVO" parameterType="int">
+    SELECT r.memberno, r.id as r_id, r.nickname as r_nickname,  r.tel as r_tel,
+              r.email as r_email, r.gradeno as r_gradeno, r.mdate as r_mdate, 
+              c.taste1, c.taste2
+    FROM member r, member_info c
+    WHERE r.memberno = #{r.memberno } and c.memberno = #{c.memberno }
+  </select>
   
   
 </mapper>

@@ -59,13 +59,13 @@
                   <TH class='th_bs'>닉네임</TH>
                 </TR>
                 <%-- table 내용 --%>
-                <c:forEach var="memberVO" items="${list }">
-                    <c:set var="id" value="${memberVO.id }" />
-                    <c:set var="nickname" value="${memberVO.nickname }" />
+                <c:forEach var="member_member_infoVO" items="${list }">
+                    <c:set var="id" value="${member_member_infoVO.r_id }" />
+                    <c:set var="nickname" value="${member_member_infoVO.r_nickname }" />
                 <TR>
                   <TH class='th_bs'>[사진]</TH>
-                  <TH class='th_bs'><A href='../member/read.do?memberno=${memberno }'>${id}</A></TH>
-                  <TH class='th_bs'></TH>
+                  <TH class='th_bs'><A href='../member_info/my_info?memberno=${memberno }'>${r_id}</A></TH>
+                  <TH class='th_bs'><A href='../member_info/my_info?memberno=${memberno }'>${r_nickname}</A></TH>
                 </TR>
                 </c:forEach>
                 <!--수정 필요-->
@@ -117,7 +117,7 @@
                 </c:forEach> -->
               </TABLE>
               <DIV class='bottom_menu'>
-                <A href="./read.do?memberno=${memberno}"><IMG src='/member/images/update.png' title='수정'></A>
+               <A href="../member_info/read.do?memberno=${memberno}"><IMG src='/member/images/update.png' title='수정'></A>
               </DIV>
 
             </div>

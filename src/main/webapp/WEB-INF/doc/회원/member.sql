@@ -43,6 +43,7 @@ CREATE SEQUENCE member_seq
 
 COMMIT;
 
+
   1. 등록
 -- 회원 관리용 계정, Q/A 용 계정
 INSERT INTO member(memberno, id, passwd, nickname, tel, email, mdate, gradeno)

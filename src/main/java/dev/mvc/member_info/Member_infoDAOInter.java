@@ -33,10 +33,19 @@ public interface Member_infoDAOInter {
     public List<Member_infoVO> list_by_memberno(int memberno);
     
     /**
-     * Member + Member_info join
+     * Member + Member_info join 목록
      * @return
      */
     public List<Member_Member_infoVO> my_info();
+    
+//    /**
+//     * r_memberno로 회원 정보 조회
+//     * @param r_memberno
+//     * @return
+//     */
+//    public Member_Member_infoVO read_info(int r_memberno);
+   
+
     
     
 }

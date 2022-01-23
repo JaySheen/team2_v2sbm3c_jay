@@ -27,7 +27,7 @@ public class Member_infoCont {
     }
     
     /**
-     * 권한그룹별 상세 권한 목록
+     * 회원번호별 상세정보
      * http://localhost:9091/member_info/list_by_memberno.do?memberno=3 
      * @return
      */
@@ -48,7 +48,7 @@ public class Member_infoCont {
 
     /**
      * 회원+회원상세 join
-     * http://localhost:9091/member_info/my_info.do
+     * http://localhost:9091/member_info/my_info.do?memberno=3
      * list_all_join개념
      * @return
      */

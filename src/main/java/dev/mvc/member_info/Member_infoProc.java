@@ -43,6 +43,6 @@ public class Member_infoProc implements Member_infoProcInter {
         List<Member_infoVO> list = this.member_infoDAO.list_by_memberno(memberno);
         return list;
     }
-    
+   
 
 }

@@ -44,7 +44,7 @@
       } else {  // when nickname is entered
         params = 'nickname=' + nickname;
         // var params = $('#frm').serialize(); // 직렬화, 폼의 데이터를 키와 값의 구조로 조합
-        // alert('params: ' + params);
+        alert('params: ' + params);
     
         $.ajax({
           url: './checkNICKNAME.do', // spring execute
@@ -79,24 +79,21 @@
       }
   }
   
+  function setFocus() {  // focus 이동
+      // console.log('btn_close click!');
+      
+      var tag = $('#btn_close').attr('data-focus'); // data-focus 속성에 선언된 값을 읽음 
+      // console.log('tag: ' + tag);
+      
+      $('#' + tag).focus(); // data-focus 속성에 선언된 태그를 찾아서 포커스 이동
+    }
+  
 </script>
 </head> 
  
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
-  <DIV class='title_line'>
-    마이페이지 회원 정보 수정
-  </DIV>
 
-  <DIV class='content_body'>    
-    <ASIDE class="aside_right">
-      <A href="javascript:location.reload();">새로고침</A>
-    </ASIDE> 
-   
-    <div class='menu_line'></div>
-    
-    <DIV id='main_panel'></DIV>
-   
     <!-- ******************** Modal 알림창 시작 ******************** -->
     <div id="modal_panel" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -120,6 +117,21 @@
         </div>
     </div>
     <!-- ******************** Modal 알림창 종료 ******************** -->
+    
+  <DIV class='title_line'>
+    마이페이지 회원 정보 수정
+  </DIV>
+
+  <DIV class='content_body'>    
+    <ASIDE class="aside_right">
+      <A href="javascript:location.reload();">새로고침</A>
+    </ASIDE> 
+   
+    <div class='menu_line'></div>
+    
+    <DIV id='main_panel'></DIV>
+   
+
       
     <FORM name='frm' id='frm' method='POST' action='./update.do' onsubmit="return send();" class="form-horizontal">
       <input type='hidden' name='memberno' id='memberno' value='${memberVO.memberno }'>          
@@ -136,8 +148,8 @@
         <SPAN id='nickname_span'></SPAN>
         <div class="col-md-5">
           <input type='text' class="form-control" name='nickname' id='nickname' 
-                     value='${memberVO.nickname }' required="required" autofocus="autofocus" 
-                     style='width: 40%;'>
+                     value='${memberVO.nickname }' maxlength="10" required="required"
+                     autofocus="autofocus" style='width: 40%;'>
           <button type='button' id="btn_checkNICKNAME" class="btn btn-info btn-md">중복확인</button>
           <SPAN id='nickname_span'></SPAN>
           <!-- NICKNAME 중복 관련 메시지 -->
