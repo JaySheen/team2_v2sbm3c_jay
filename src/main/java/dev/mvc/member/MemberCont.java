@@ -157,23 +157,7 @@ public class MemberCont {
        
        return mav; // forward
      }
-     
-//     /**
-//      * 마이페이지
-//      * @param memberno
-//      * @return
-//      */
-//     @RequestMapping(value="/member/mypage.do", method=RequestMethod.GET)
-//     public ModelAndView mypage(int memberno){
-//       ModelAndView mav = new ModelAndView();
-//       
-//       MemberVO memberVO = this.memberProc.mypage(memberno);
-//       mav.addObject("memberVO", memberVO);
-//       mav.setViewName("/member/mypage"); // /member/mypage.jsp
-//       
-//       return mav; // forward
-//     }
-     
+
      /**
       * 회원 정보 수정 처리
       * @param memberVO
@@ -589,21 +573,6 @@ public class MemberCont {
 
           return mav; // forward
         }
-//      /**
-//      * 마이페이지
-//      * @param memberno
-//      * @return
-//      */
-//     @RequestMapping(value="/member/mypage.do", method=RequestMethod.GET)
-//     public ModelAndView mypage(int memberno){
-//       ModelAndView mav = new ModelAndView();
-//       
-//       MemberVO memberVO = this.memberProc.mypage(memberno);
-//       mav.addObject("memberVO", memberVO);
-//       mav.setViewName("/member/mypage"); // /member/mypage.jsp
-//       
-//       return mav; // forward
-//     }
     
 
 }

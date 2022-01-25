@@ -61,7 +61,7 @@
                 </TR>
                 <%-- table 내용 --%>
                 <TR>
-                  <TH class='th_bs'>[사진]</TH>
+                  <TH class='th_bs'><IMG src='/member/images/profile_img.jpg' width="100" height="100" title='기본 프로필'><br>[수정]</TH>
                   <TH class='th_bs'>${memberVO.id }</TH>
                   <TH class='th_bs'>${memberVO.nickname }</TH>
                 </TR>
@@ -136,8 +136,10 @@
           <div class="panel panel-warning">
             <div class="panel-heading">등급</div>
             <div class="panel-body">
-                      <p>빵파고 커뮤니티에서 얼마나 활동하였는지 알려주는 등급입니다.<br>
-                          다양한 빵파고의 활동을 통해 등급을 상승시켜 보세요.</p>
+                <p>빵파고 커뮤니티에서 얼마나 활동하였는지 알려주는 등급입니다.<br>
+                      다양한 빵파고의 활동을 통해 등급을 상승시켜 보세요.</p>
+
+                          
             </div>
           </div>
           

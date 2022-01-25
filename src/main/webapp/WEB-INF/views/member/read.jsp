@@ -28,11 +28,11 @@
       // $('#btn_close').attr("data-focus", "이동할 태그 지정");
       
       var frm = $('#frm'); // id가 frm인 태그 검색
-      var id = $('#nickname', frm).val(); // frm 폼에서 id가 'nickname'인 태그 검색
+      var nickname = $('#nickname', frm).val(); // frm 폼에서 id가 'nickname'인 태그 검색 //1
       var params = '';
       var msg = '';
     
-      if ($.trim(id).length == 0) { // id를 입력받지 않은 경우
+      if ($.trim(nickname).length == 0) { // id를 입력받지 않은 경우 //1
         msg = '· 닉네임을 입력하세요.<br>· 닉네임 입력은 필수 입니다.<br>· 닉네임는 3자이상 권장합니다.';
         
         $('#modal_content').attr('class', 'alert alert-danger'); // Bootstrap CSS 변경
@@ -44,7 +44,7 @@
       } else {  // when nickname is entered
         params = 'nickname=' + nickname;
         // var params = $('#frm').serialize(); // 직렬화, 폼의 데이터를 키와 값의 구조로 조합
-        alert('params: ' + params);
+        // alert('params: ' + params);
     
         $.ajax({
           url: './checkNICKNAME.do', // spring execute
@@ -54,7 +54,7 @@
           dataType: 'json', // 응답 형식: json, html, xml...
           data: params,      // 데이터
           success: function(rdata) { // 서버로부터 성공적으로 응답이 온경우
-            alert(rdata);
+            //alert(rdata);
             var msg = "";
             
             if (rdata.cnt > 0) {
@@ -64,7 +64,7 @@
             } else {
               $('#modal_content').attr('class', 'alert alert-success'); // Bootstrap CSS 변경
               msg = "사용 가능한 닉네임 입니다.";
-              // $.cookie('checkId', 'TRUE'); // Cookie 기록
+              //$.cookie('checkId', 'TRUE'); // Cookie 기록
             }
             
             $('#modal_title').html('닉네임 중복 확인');  // 제목 
@@ -78,15 +78,15 @@
         });
       }
   }
-  
+
   function setFocus() {  // focus 이동
-      // console.log('btn_close click!');
-      
-      var tag = $('#btn_close').attr('data-focus'); // data-focus 속성에 선언된 값을 읽음 
-      // console.log('tag: ' + tag);
-      
-      $('#' + tag).focus(); // data-focus 속성에 선언된 태그를 찾아서 포커스 이동
-    }
+    // console.log('btn_close click!');
+    
+    var tag = $('#btn_close').attr('data-focus'); // data-focus 속성에 선언된 값을 읽음 
+    // console.log('tag: ' + tag);
+    
+    $('#' + tag).focus(); // data-focus 속성에 선언된 태그를 찾아서 포커스 이동
+  }
   
 </script>
 </head> 
@@ -149,7 +149,7 @@
         <div class="col-md-5">
           <input type='text' class="form-control" name='nickname' id='nickname' 
                      value='${memberVO.nickname }' maxlength="10" required="required"
-                     autofocus="autofocus" style='width: 40%;'>
+                     placeholder="닉네임(한글 포함 10자 이내)" autofocus="autofocus"  style='width: 40%;'>
           <button type='button' id="btn_checkNICKNAME" class="btn btn-info btn-md">중복확인</button>
           <SPAN id='nickname_span'></SPAN>
           <!-- NICKNAME 중복 관련 메시지 -->
